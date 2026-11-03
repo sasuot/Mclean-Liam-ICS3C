@@ -1,5 +1,15 @@
 import pygame,random
 
+def movememt(enemys,enemy_speed,enemy_x,enemy_y,player_x,player_y):
+    for enemy in enemys:
+        if enemy_x < player_x:
+                enemy_x += enemy_speed
+        elif enemy_x > player_x:
+                enemy_y -= enemy_speed
+        if enemy_y < player_y:
+                enemy_y += enemy_speed
+        elif enemy_y > player_y:
+                enemy_y -= enemy_speed
 pygame.init()
 
 # Create the game window
@@ -16,10 +26,7 @@ player_x = 700
 player_y = 700
 enemy_x = 700
 enemy_y = 0
-enemy2_x = 700
-enemy2_y = 0
-enemy3_x = 600
-enemy3_y = 0
+
 end_y = 1000
 end_x = 700
 bullet_x = player_y
@@ -27,6 +34,14 @@ bullet_y = player_x
 bullet_speed = 35  # Increased speed so it doesn't move at a crawl
 bullet_active = False
 
+
+enemys = [
+     pygame.Rect(enemy_x,enemy_y,25,25),
+    pygame.Rect(enemy_x,enemy_y,25,25),
+    pygame.Rect(enemy_x,enemy_y,25,25),
+    pygame.Rect(enemy_x,enemy_y,25,25),
+    pygame.Rect(enemy_x,enemy_y,25,25),
+    pygame.Rect(enemy_x,enemy_y,25,25)]
 # Control how many pixels the square moves each frame
 speed = 10
 enemy_speed = 3
@@ -71,7 +86,7 @@ while running:
     elif enemy_y > player_y:
             enemy_y -= enemy_speed
 
-
+    movememt(enemys,enemy_speed,enemy_x,enemy_y,player_x,player_y)
     if enemy_y >=700:
          running = False
     # 1. HANDLE INPUT (Only handles the initial trigger)
@@ -97,28 +112,31 @@ while running:
     # Now draw the bullet if it's active
     if bullet_active:
         pygame.draw.rect(screen, BLUE, (bullet_x, bullet_y, 15, 15)) # Made bullet smaller (15x15) so it looks like a bullet!
-
+   
     # 1. Create rectangle objects for both the player and the enemy
     player_rect = pygame.Rect(player_x, player_y, 50, 50)
     enemy_rect = pygame.Rect(enemy_x, enemy_y, 30, 30)
-    enemy2_rect = pygame.Rect(enemy2_x, enemy2_y, 30, 30)
-    enemy3_rect = pygame.Rect(enemy3_x, enemy3_y, 30, 30)
+    
     bullet_rect = pygame.Rect(bullet_x,bullet_y,15,15)
     end_block =  pygame.Rect(end_y,end_x, 1,1)
-    
+    enemy1 = pygame.Rect(enemy_x, enemy_y ,25,25)
     # 2. Check if the rectangles overlap (collision)
     if player_rect.colliderect(enemy_rect):
         running = False  # Ends the game loop
     if bullet_rect.colliderect(enemy_rect):
         enemy_x = random.randint (0,1400)
         enemy_y = 0
+
+
+    for enemy in enemys:
+         pygame.draw.rect(screen, RED, enemy, enemy_speed)
+         
     # Draw the player and enemy on top of the background
     pygame.draw.rect(screen, BLUE, (player_x, player_y, 50, 50))
     pygame.draw.rect(screen, RED, (enemy_x, enemy_y, 30, 30))
     pygame.draw.rect(screen, BLUE, (end_y,end_x,1,1))
-    pygame.draw.rect(screen, RED, (enemy2_x, enemy2_y, 30, 30))
-    pygame.draw.rect(screen, RED, (enemy3_x, enemy3_y, 30, 30))
-
+    
+    pygame.draw.rect(screen, RED,(enemy_x,enemy_y,25,25))
     # Show the updated screen
     pygame.display.flip()
     
