@@ -1,5 +1,11 @@
 import pygame,random
 
+
+pygame.mixer.music.load("muzaproduction-general-battle-121367.mp3")
+pygame.mixer.music.play(-1)
+pygame.mixer.music.set_volume(1)
+
+
 def movememt(enemys,enemy_speed,enemy_x,enemy_y,player_x,player_y):
     for enemy in enemys:
         if enemy_x < player_x:
@@ -21,6 +27,7 @@ SKY_BLUE = (135, 206, 235)
 BLUE = (0, 0, 255)
 RED = (255, 0, 0)
 BLACK = (0, 0, 0)
+WHITE = (255,255,255)
 # Store the player's and enemenys starting position
 player_x = 700
 player_y = 700
@@ -42,7 +49,7 @@ bullet_active = False
 
 # Control how many pixels the square moves each frame
 speed = 15
-enemy_speed = 3
+enemy_speed = 2
 
 # Keep the game running
 running = True
@@ -123,7 +130,7 @@ while running:
     # 1. Create rectangle objects for both the player and the enemy
     player_rect = pygame.Rect(player_x, player_y, 50, 50)
     enemy_rect = pygame.Rect(enemy_x, enemy_y, 30, 30)
-    enemy2_rect = pygame.Rect(enemy_x,enemy_y,25,25),
+    enemy2_rect = pygame.Rect(enemy2_x,enemy2_y,25,25)
     
     
     bullet_rect = pygame.Rect(bullet_x,bullet_y,30,30)
@@ -152,12 +159,62 @@ while running:
     pygame.draw.rect(screen, RED, (enemy_x, enemy_y, 30, 30))
     pygame.draw.rect(screen, BLUE, (end_y,end_x,1,1))
     pygame.draw.rect(screen, RED, (enemy2_x,enemy2_y,25,25))
-    pygame.Rect(enemy_x,enemy_y,25,25),
-    pygame.Rect(enemy_x,enemy_y,25,25),
-    pygame.Rect(enemy_x,enemy_y,25,25),
-    pygame.Rect(enemy_x,enemy_y,25,25)
+
+    #stars
+    pygame.draw.rect(screen, WHITE, (70,350, 5, 5))
+    pygame.draw.rect(screen, WHITE, (60, 560, 5, 5))
+    pygame.draw.rect(screen, WHITE, ( 80, 400, 5, 5))
+    pygame.draw.rect(screen, WHITE, ( 50, 250, 5, 5))
+    pygame.draw.rect(screen, WHITE, (70,350, 5, 5))
+    pygame.draw.rect(screen, WHITE, (100,350, 5, 5))
+    pygame.draw.rect(screen, WHITE, (60, 500, 5, 5))
+    pygame.draw.rect(screen, WHITE, ( 800, 400, 5, 5))
+    pygame.draw.rect(screen, WHITE, ( 500, 250, 5, 5))
+    pygame.draw.rect(screen, WHITE, (700, 350, 5, 5))
+    pygame.draw.rect(screen, WHITE, (605, 550, 5, 5))
+    pygame.draw.rect(screen, WHITE, ( 400, 765, 5, 5))
+    pygame.draw.rect(screen, WHITE, ( 520, 650, 5, 5))
+    pygame.draw.rect(screen, WHITE, (770 ,350, 5, 5))
+    pygame.draw.rect(screen, WHITE, (70, 350, 5, 5))
+    pygame.draw.rect(screen, WHITE, (60, 580, 5, 5))
+    pygame.draw.rect(screen, WHITE, ( 854, 460, 5, 5))
+    pygame.draw.rect(screen, WHITE, ( 565, 250, 5, 5))
+    pygame.draw.rect(screen, WHITE, (730,350, 5, 5))
+    pygame.draw.rect(screen, WHITE, (630, 500,5, 5))
+    pygame.draw.rect(screen, WHITE, ( 802, 430, 5, 5))
+    pygame.draw.rect(screen, WHITE, ( 588, 253, 5, 5))
+    pygame.draw.rect(screen, WHITE, (740,356, 5, 5))
+    pygame.draw.rect(screen, WHITE, (402, 591, 5, 5))
+    pygame.draw.rect(screen, WHITE, ( 810, 482, 5, 5))
+    pygame.draw.rect(screen, WHITE, ( 520, 254, 5, 5))
+    pygame.draw.rect(screen, WHITE, (703,354, 5, 5))
+    pygame.draw.rect(screen, WHITE, (602, 56, 5, 5))
+    pygame.draw.rect(screen, WHITE, ( 80, 40, 5, 5))
+    pygame.draw.rect(screen, WHITE, ( 50, 800, 5, 5))
+    pygame.draw.rect(screen, WHITE, (70,350, 5, 5))
+    pygame.draw.rect(screen, WHITE, (100,350, 5, 5))
+    pygame.draw.rect(screen, WHITE, (60, 500, 5, 5))
+    pygame.draw.rect(screen, WHITE, ( 800, 400, 5, 5))
+    pygame.draw.rect(screen, WHITE, ( 500, 250, 5, 5))
+    pygame.draw.rect(screen, WHITE, (700, 350, 5, 5))
+    pygame.draw.rect(screen, WHITE, (605, 550, 5, 5))
+    pygame.draw.rect(screen, WHITE, ( 400, 765, 5, 5))
+    pygame.draw.rect(screen, WHITE, ( 520, 650, 5, 5))
+    pygame.draw.rect(screen, WHITE, (770 ,350, 5, 5))
+    pygame.draw.rect(screen, WHITE, (701, 350, 5, 5))
+    pygame.draw.rect(screen, WHITE, (900, 580, 5, 5))
+    pygame.draw.rect(screen, WHITE, ( 800, 432, 5, 5))
+    pygame.draw.rect(screen, WHITE, ( 700, 292, 5, 5))
+    pygame.draw.rect(screen, WHITE, (630,386, 5, 5))
+    pygame.draw.rect(screen, WHITE, (530, 512,5, 5))
+    pygame.draw.rect(screen, WHITE, ( 802, 433, 5, 5))
+    pygame.draw.rect(screen, WHITE, ( 580, 676, 5, 5))
+    pygame.draw.rect(screen, WHITE, (740,323, 5, 5))
+    pygame.draw.rect(screen, WHITE, (602, 395, 5, 5))
+    pygame.draw.rect(screen, WHITE, ( 810, 488, 5, 5))
+    pygame.draw.rect(screen, WHITE, ( 520, 223, 5, 5))
     
-    pygame.draw.rect(screen, RED,(enemy_x,enemy_y,25,25))
+
     # Show the updated screen
     pygame.display.flip()
     
